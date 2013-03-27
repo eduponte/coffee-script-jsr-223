@@ -8,7 +8,24 @@
     <packaging>jar</packaging>
 
     <name>coffee-script-jsr-223</name>
-    <url>http://maven.apache.org</url>
+    <inceptionYear>2013</inceptionYear>
+    <url>http://www.akiban.com/</url>
+    <organization>
+        <name>Akiban Technologies, Inc</name>
+        <url>http://www.akiban.com</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git://github.com/akiban/coffee-script-jsr-223.git</connection>
+        <url>https://github.com/akiban/coffee-script-jsr-223.git</url>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -39,6 +56,32 @@
                     <source>1.7</source>
                     <target>1.7</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.mycila.maven-license-plugin</groupId>
+                <artifactId>maven-license-plugin</artifactId>
+                <version>1.9.0</version>
+                <configuration>
+                    <header>${basedir}/src/etc/header.txt</header>
+                    <strictCheck>true</strictCheck>
+                    <properties>
+                        <year>${project.inceptionYear}</year>
+                    </properties>
+                    <excludes>
+                        <exclude>.gitignore</exclude>
+                        <exclude>README.md</exclude>
+                        <exclude>**/*.txt</exclude>
+                        <exclude>**/coffee-script.js</exclude>
+                        <exclude>src/test/resources/**</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
